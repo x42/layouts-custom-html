@@ -1,5 +1,6 @@
 import { createLayoutsWidget } from 'discourse/plugins/discourse-layouts/discourse/lib/layouts';
 import { scheduleOnce } from "@ember/runloop";
+import { h } from 'virtual-dom';
 
 export default createLayoutsWidget('custom-html', {
   defaultState() {
@@ -16,12 +17,12 @@ export default createLayoutsWidget('custom-html', {
       if (category && category.layouts_custom_html) {
         html = category.layouts_custom_html;
       }
-
+      debugger;
       scheduleOnce('afterRender', this, function() {
         $("div.custom-html").append(`<div class='contents'>${html}</div>`);
       });
       state.renderScheduled = true;
     }
-    return '';
+    return h('div.custom-html');
   }
 });

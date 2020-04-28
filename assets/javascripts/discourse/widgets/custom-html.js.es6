@@ -17,7 +17,6 @@ export default createLayoutsWidget('custom-html', {
       if (category && category.layouts_custom_html) {
         html = category.layouts_custom_html;
       }
-      debugger;
       scheduleOnce('afterRender', this, function() {
         $("div.custom-html").append(`<div class='contents'>${html}</div>`);
       });
